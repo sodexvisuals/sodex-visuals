@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sodex Visuals | AI Creative Studio</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #120d09;
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+header {
+    background: #1d120c;
+    border-bottom: 1px solid #9c7138;
+    padding: 20px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: #d9a441;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    margin-left: 25px;
+}
+
+nav a:hover {
+    color: #d9a441;
+}
+
+.hero {
+    text-align: center;
+    padding: 90px 20px;
+    background: linear-gradient(
+        rgba(18,13,9,0.9),
+        rgba(18,13,9,0.95)
+    );
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.gold {
+    color: #d9a441;
+}
+
+.hero p {
+    max-width: 700px;
+    margin: auto;
+    color: #d6cec5;
+    font-size: 18px;
+}
+
+.main-button {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 15px 30px;
+    background: #d9a441;
+    color: #160e08;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.main-button:hover {
+    background: #f0c66d;
+}
+
+section {
+    padding: 70px 7%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-title h2 {
+    font-size: 34px;
+    margin-bottom: 10px;
+}
+
+.section-title p {
+    color: #bdb1a7;
+}
+
+/* CREATIVE TOOLS */
+
+.tools {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 20px;
+}
+
+.tool-card {
+    background: #21150e;
+    border: 1px solid #513b23;
+    border-radius: 15px;
+    padding: 30px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.tool-card:hover {
+    transform: translateY(-5px);
+    border-color: #d9a441;
+}
+
+.tool-icon {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.tool-card h3 {
+    margin-bottom: 10px;
+    color: #e5b653;
+}
+
+.tool-card p {
+    color: #bdb1a7;
+}
+
+/* STUDIO */
+
+#studio {
+    display: none;
+}
+
+.studio-box {
+    max-width: 900px;
+    margin: auto;
+    background: #1d120c;
+    border: 1px solid #624724;
+    border-radius: 18px;
+    padding: 35px;
+}
+
+.studio-box h2 {
+    text-align: center;
+    margin-bottom: 10px;
+    color: #d9a441;
+}
+
+.studio-subtitle {
+    text-align: center;
+    color: #bdb1a7;
+    margin-bottom: 30px;
+}
+
+/* FORM */
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 14px;
+    background: #120d09;
+    color: #ffffff;
+    border: 1px solid #604621;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+textarea {
+    min-height: 130px;
+    resize: vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #d9a441;
+}
+
+/* PHOTO UPLOAD */
+
+.upload-box {
+    border: 2px dashed #76552d;
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.upload-box p {
+    color: #bdb1a7;
+    margin-bottom: 15px;
+}
+
+#imagePreview {
+    display: none;
+    max-width: 100%;
+    max-height: 350px;
+    margin: 20px auto 0;
+    border-radius: 12px;
+}
+
+/* GENERATE */
+
+.generate-button {
+    width: 100%;
+    padding: 17px;
+    background: #d9a441;
+    color: #160e08;
+    border: none;
+    border-radius: 8px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.generate-button:hover {
+    background: #f0c66d;
+}
+
+/* RESULT */
+
+#result {
+    display: none;
+    max-width: 900px;
+    margin: 40px auto 0;
+    background: #21150e;
+    border: 1px solid #b88a44;
+    border-radius: 15px;
+    padding: 30px;
+}
+
+.result-title {
+    color: #d9a441;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.result-item {
+    margin-bottom: 20px;
+}
+
+.result-item strong {
+    color: #e5b653;
+}
+
+.analysis {
+    margin-top: 25px;
+    padding: 25px;
+    background: #120d09;
+    border-radius: 12px;
+    border-left: 4px solid #d9a441;
+}
+
+.analysis h3 {
+    color: #d9a441;
+    margin-bottom: 15px;
+}
+
+.analysis p {
+    margin-bottom: 15px;
+    color: #ded6cf;
+}
+
+/* COMING SOON */
+
+.coming-soon {
+    text-align: center;
+    padding: 40px;
+    background: #1d120c;
+    border-radius: 15px;
+    border: 1px solid #513b23;
+}
+
+.coming-soon h3 {
+    color: #d9a441;
+    margin-bottom: 10px;
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    padding: 35px;
+    border-top: 1px solid #3e2b19;
+    color: #9d9187;
+}
+
+@media(max-width: 700px) {
+
+    .hero h1 {
+        font-size: 34px;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .studio-box {
+        padding: 20px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+
+    <div class="logo">
+        SODEX VISUALS
+    </div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#tools">Creative Studio</a>
+    </nav>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+    <h1>
+        Welcome to
+        <span class="gold">Sodex Visuals</span>
+    </h1>
+
+    <p>
+        Your AI Creative Studio for interior design,
+        photo editing, video creation, graphics and
+        digital content.
+    </p>
+
+    <button
+        class="main-button"
+        onclick="openStudio()">
+        Enter Creative Studio
+    </button>
+
+</section>
+
+
+<!-- CREATIVE TOOLS -->
+
+<section id="tools">
+
+    <div class="section-title">
+
+        <h2>
+            What Do You Want To Create?
+        </h2>
+
+        <p>
+            Choose a creative service below.
+        </p>
+
+    </div>
+
+
+    <div class="tools">
+
+        <div
+            class="tool-card"
+            onclick="openStudio()">
+
+            <div class="tool-icon">
+                ??
+            </div>
+
+            <h3>
+                AI Interior Design
+            </h3>
+
+            <p>
+                Transform your room with
+                intelligent design concepts.
+            </p>
+
+        </div>
+
+
+        <div
+            class="tool-card"
+            onclick="comingSoon('Photo Editor')">
+
+            <div class="tool-icon">
+                ???
+            </div>
+
+            <h3>
+                AI Photo Editor
+            </h3>
+
+            <p>
+                Enhance and creatively edit
+                your photographs.
+            </p>
+
+        </div>
+
+
+        <div
+            class="tool-card"
+            onclick="comingSoon('Video Studio')">
+
+            <div class="tool-icon">
+                ??
+            </div>
+
+            <h3>
+                AI Video Studio
+            </h3>
+
+            <p>
+                Create and edit engaging
+                promotional videos.
+            </p>
+
+        </div>
+
+
+        <div
+            class="tool-card"
+            onclick="comingSoon('Graphic Design')">
+
+            <div class="tool-icon">
+                ??
+            </div>
+
+            <h3>
+                Graphic Design
+            </h3>
+
+            <p>
+                Create flyers, banners,
+                posters and adverts.
+            </p>
+
+        </div>
+
+
+        <div
+            class="tool-card"
+            onclick="comingSoon('AI Content Creator')">
+
+            <div class="tool-icon">
+                ??
+            </div>
+
+            <h3>
+                AI Content Creator
+            </h3>
+
+            <p>
+                Create captions, adverts,
+                scripts and marketing content.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- INTERIOR DESIGN STUDIO -->
+
+<section id="studio">
+
+    <div class="studio-box">
+
+        <h2>
+            ?? AI Interior Designer
+        </h2>
+
+        <p class="studio-subtitle">
+            Tell Sodex Visuals about your space.
+        </p>
+
+
+        <!-- PHOTO -->
+
+        <div class="upload-box">
+
+            <p>
+                Choose a clear photo of your room
+            </p>
+
+            <input
+                type="file"
+                id="roomPhoto"
+                accept="image/*"
+                onchange="previewImage()">
+
+            <img
+                id="imagePreview"
+                alt="Room preview">
+
+        </div>
+
+
+        <!-- ROOM TYPE -->
+
+        <div class="form-group">
+
+            <label>
+                1. Room Type
+            </label>
+
+            <select id="roomType">
+
+                <option value="">
+                    Select room type
+                </option>
+
+                <option>
+                    Living Room
+                </option>
+
+                <option>
+                    Bedroom
+                </option>
+
+                <option>
+                    Kitchen
+                </option>
+
+                <option>
+                    Dining Room
+                </option>
+
+                <option>
+                    Office
+                </option>
+
+                <option>
+                    Restaurant
+                </option>
+
+                <option>
+                    Hotel
+                </option>
+
+                <option>
+                    Shop
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- STYLE -->
+
+        <div class="form-group">
+
+            <label>
+                2. Design Style
+            </label>
+
+            <select id="designStyle">
+
+                <option value="">
+                    Select design style
+                </option>
+
+                <option>
+                    Modern
+                </option>
+
+                <option>
+                    Luxury
+                </option>
+
+                <option>
+                    Minimalist
+                </option>
+
+                <option>
+                    Classic
+                </option>
+
+                <option>
+                    Contemporary
+                </option>
+
+                <option>
+                    African Inspired
+                </option>
+
+                <option>
+                    Industrial
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- COLOUR -->
+
+        <div class="form-group">
+
+            <label>
+                3. Preferred Colour
+            </label>
+
+            <input
+                type="text"
+                id="preferredColour"
+                placeholder="Example: Cream and gold">
+
+        </div>
+
+
+        <!-- BUDGET -->
+
+        <div class="form-group">
+
+            <label>
+                4. Your Budget (?)
+            </label>
+
+            <input
+                type="number"
+                id="budget"
+                placeholder="Example: 500000">
+
+        </div>
+
+
+        <!-- DESCRIPTION -->
+
+        <div class="form-group">
+
+            <label>
+                5. Tell Us What You Want
+            </label>
+
+            <textarea
+                id="description"
+                placeholder="Example: I want a beautiful TV wall, comfortable sofa and elegant lighting."></textarea>
+
+        </div>
+
+
+        <!-- GENERATE -->
+
+        <button
+            class="generate-button"
+            onclick="generateConcept()">
+
+            ? Generate My Design Concept
+
+        </button>
+
+
+        <!-- RESULT -->
+
+        <div id="result">
+
+            <h2 class="result-title">
+                ? Sodex Visuals Design Concept
+            </h2>
+
+            <div class="result-item">
+                <strong>Room:</strong>
+                <span id="resultRoom"></span>
+            </div>
+
+            <div class="result-item">
+                <strong>Design Style:</strong>
+                <span id="resultStyle"></span>
+            </div>
+
+            <div class="result-item">
+                <strong>Colour:</strong>
+                <span id="resultColour"></span>
+            </div>
+
+            <div class="result-item">
+                <strong>Budget:</strong>
+                <span id="resultBudget"></span>
+            </div>
+
+            <div class="result-item">
+                <strong>Customer Request:</strong>
+                <span id="resultDescription"></span>
+            </div>
+
+
+            <div class="analysis">
+
+                <h3>
+                    AI Design Analysis
+                </h3>
+
+                <p>
+                    <strong>??? Furniture:</strong><br>
+                    <span id="furniture"></span>
+                </p>
+
+                <p>
+                    <strong>?? Lighting:</strong><br>
+                    <span id="lighting"></span>
+                </p>
+
+                <p>
+                    <strong>?? TV / Feature Wall:</strong><br>
+                    <span id="featureWall"></span>
+                </p>
+
+                <p>
+                    <strong>?? Flooring:</strong><br>
+                    <span id="flooring"></span>
+                </p>
+
+                <p>
+                    <strong>?? Curtains:</strong><br>
+                    <span id="curtains"></span>
+                </p>
+
+                <p>
+                    <strong>?? Accessories:</strong><br>
+                    <span id="accessories"></span>
+                </p>
+
+                <p>
+                    <strong>?? Budget Direction:</strong><br>
+                    <span id="budgetAdvice"></span>
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FUTURE FEATURES -->
+
+<section>
+
+    <div class="section-title">
+
+        <h2>
+            More From Sodex Visuals
+        </h2>
+
+        <p>
+            More creative AI tools are coming.
+        </p>
+
+    </div>
+
+
+    <div class="coming-soon">
+
+        <h3>
+            ?? Creative AI Platform
+        </h3>
+
+        <p>
+            Photo editing, video creation,
+            graphics and AI content will be
+            connected here as we build Sodex
+            Visuals into a complete creative studio.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>
+        © 2026 Sodex Visuals
+    </p>
+
+    <p>
+        AI Creative Studio
+    </p>
+
+</footer>
+
+
+<script>
+
+/* OPEN INTERIOR DESIGN STUDIO */
+
+function openStudio() {
+
+    var studio =
+        document.getElementById("studio");
+
+    studio.style.display = "block";
+
+    studio.scrollIntoView();
+
+}
+
+
+/* PHOTO PREVIEW */
+
+function previewImage() {
+
+    var input =
+        document.getElementById("roomPhoto");
+
+    var preview =
+        document.getElementById("imagePreview");
+
+    if (input.files && input.files[0]) {
+
+        var reader =
+            new FileReader();
+
+        reader.onload = function(e) {
+
+            preview.src = e.target.result;
+
+            preview.style.display = "block";
+
+        };
+
+        reader.readAsDataURL(input.files[0]);
+
+    }
+
+}
+
+
+/* GENERATE DESIGN */
+
+function generateConcept() {
+    var room = document.getElementById("roomType").value;
+    var style = document.getElementById("designStyle").value;
+    var colour = document.getElementById("preferredColour").value;
+    var budget = document.getElementById("budget").value;
+    var description = document.getElementById("description").value;
+    var photo = document.getElementById("roomPhoto").files[0];
+
+    if (room === "") {
+        alert("Please select your room type.");
+        return;
+    }
+
+    if (style === "") {
+        alert("Please select your design style.");
+        return;
+    }
+
+    if (budget === "") {
+        alert("Please enter your budget.");
+        return;
+    }
+
+    if (!photo) {
+        alert("Please upload a room or project photo first.");
+        return;
+    }
+
+    var button = document.querySelector(".generate-button");
+
+    button.innerText = "AI is redesigning your space...";
+    button.disabled = true;
+
+    var reader = new FileReader();
+
+    reader.onload = function(event) {
+
+        var imageData = event.target.result;
+
+        var data = {
+            room: room,
+            style: style,
+            colour: colour,
+            budget: budget,
+            description: description,
+            image: imageData,
+            mimeType: photo.type
+        };
+
+        fetch(
+		
+    "https://script.google.com/macros/s/AKfycbzX1LwcIuShHsEf3jL1Gakgg9ippsrUXmvBCjSyZOHbsTdGZncJg8-MISV2tDNm69Zy/exec",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "text/plain;charset=utf-8"
+                },
+                body: JSON.stringify(data)
+            }
+        )
+        .then(function(response) {
+    return response.text();
+})
+.then(function(text) {
+    console.log("GOOGLE RESPONSE:");
+    console.log(text);
+
+    var result;
+
+    try {
+        result = JSON.parse(text);
+    } catch (e) {
+        throw new Error(
+            "Google returned a non-JSON response:\n\n" + text.substring(0, 500)
+        );
+    }
+        })
+        .then(function(result) {
+		return result;
+
+            if (!result.success) {
+                throw new Error(
+                    result.error || "AI image generation failed."
+                );
+            }
+
+            document.getElementById("resultRoom").innerText = room;
+
+            document.getElementById("resultStyle").innerText = style;
+
+            document.getElementById("resultColour").innerText =
+                colour || "Designer recommended";
+
+            document.getElementById("resultBudget").innerText =
+                "?" + Number(budget).toLocaleString();
+
+            document.getElementById("resultDescription").innerText =
+                description || "No additional description provided.";
+
+            /*
+             * DISPLAY GENERATED IMAGE
+             */
+
+            var resultBox = document.getElementById("result");
+
+            var oldImage = document.getElementById("aiGeneratedImage");
+
+            if (oldImage) {
+                oldImage.remove();
+            }
+
+            var generatedImage = document.createElement("img");
+
+            generatedImage.id = "aiGeneratedImage";
+
+            generatedImage.src =
+                "data:" + result.mimeType + ";base64," + result.image;
+
+            generatedImage.alt =
+                "Sodex Visuals AI Generated Interior Design";
+
+            generatedImage.style.width = "100%";
+            generatedImage.style.maxWidth = "900px";
+            generatedImage.style.display = "block";
+            generatedImage.style.margin = "25px auto";
+            generatedImage.style.borderRadius = "15px";
+
+            resultBox.insertBefore(
+                generatedImage,
+                resultBox.firstChild
+            );
+
+            /*
+             * DISPLAY AI DESIGN DESCRIPTION
+             */
+
+            document.getElementById("furniture").innerText =
+                result.answer || "AI design generated successfully.";
+
+            document.getElementById("lighting").innerText = "";
+            document.getElementById("featureWall").innerText = "";
+            document.getElementById("flooring").innerText = "";
+            document.getElementById("curtains").innerText = "";
+            document.getElementById("accessories").innerText = "";
+            document.getElementById("budgetAdvice").innerText = "";
+
+            resultBox.style.display = "block";
+
+            resultBox.scrollIntoView({
+                behavior: "smooth"
+            });
+
+            button.innerText = "? AI Design Generated";
+            button.disabled = false;
+
+        })
+        .catch(function(error) {
+
+            console.error(error);
+
+            alert(
+                "Sodex Visuals AI could not generate the image.\n\n" +
+                error.message
+            );
+
+            button.innerText = "Generate My Design Concept";
+            button.disabled = false;
+        });
+    };
+
+    reader.onerror = function() {
+
+        alert("The room image could not be read.");
+
+        button.innerText = "Generate My Design Concept";
+        button.disabled = false;
+    };
+
+    reader.readAsDataURL(photo);
+}
+    
+       
+
+/* FUTURE TOOLS */
+
+function comingSoon(tool) {
+
+    alert(
+        tool +
+        " is coming soon to Sodex Visuals AI Creative Studio."
+    );
+
+}
+
+</script>
+
+</body>
+
+</html>
