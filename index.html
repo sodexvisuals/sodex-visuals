@@ -819,7 +819,7 @@ footer {
 <footer>
 
     <p>
-        © 2026 Sodex Visuals
+        Â© 2026 Sodex Visuals
     </p>
 
     <p>
@@ -953,8 +953,12 @@ function generateConcept() {
             "Google returned a non-JSON response:\n\n" + text.substring(0, 500)
         );
     }
-        })
-        .then(function(result) {
+
+    return result;
+})
+.then(function(result) {
+
+    if (!result.success) {
 		return result;
 
             if (!result.success) {
